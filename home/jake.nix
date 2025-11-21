@@ -13,6 +13,6 @@
       userEmail = "jakesykes@proton.me";
     };
   };
-
+  
   home.stateVersion = "25.05";
 }
