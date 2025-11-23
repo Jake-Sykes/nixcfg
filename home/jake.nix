@@ -6,6 +6,7 @@ let
   configs = {
     emacs = "emacs";
     sway = "sway";
+    fuzzel = "fuzzel";
   };
 in
 {
