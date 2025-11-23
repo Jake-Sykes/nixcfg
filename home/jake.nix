@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ config, inputs, pkgs, ... }:
 
 let
   dotfiles = "${config.home.homeDirectory}/nix/config";
