@@ -2,11 +2,10 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
+    [ ./hardware-configuration.nix
+      ./../../modules/desktop/sway.nix
     ];
 
-  # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -28,19 +27,6 @@
     LC_TELEPHONE = "en_GB.UTF-8";
     LC_TIME = "en_GB.UTF-8";
   };
-
-  services.xserver.enable = true;
-  services.xserver.displayManager.lightdm.enable = true;
-  services.xserver.displayManager.session = [
-    { manage = "window";
-      name = "EXWM";
-      start = ''
-        exec emacs
-      '';
-    }
-  ];
-  services.xserver.desktopManager.xfce.enable = true;
-
 
   services.xserver.xkb = {
     layout = "gb";
@@ -87,14 +73,12 @@
     packages = with pkgs; [
       librewolf
       google-chrome
-      brightnessctl
     ];
   };
 
   nixpkgs.config.allowUnfree = true;
  
   environment.systemPackages = with pkgs; [
-    emacs
     vim
     wget
     git
