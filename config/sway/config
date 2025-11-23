@@ -13,7 +13,7 @@ input type:touchpad {
       middle_emulation enabled
 }
 
-bindsym Mod4+e exec emacs
+bindsym Mod4+e exec emacsclient -c
 bindsym Mod4+Return exec foot
 bindsym Mod4+l exec fuzzel
 
