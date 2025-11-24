@@ -7,6 +7,7 @@ let
     emacs = "emacs";
     sway = "sway";
     fuzzel = "fuzzel";
+    foot = "foot";
   };
 in
 {

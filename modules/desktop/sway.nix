@@ -14,5 +14,8 @@
     fuzzel
     mako
     brightnessctl
+    grim
+    slurp
+    xfce.thunar
   ];
 }
