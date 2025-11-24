@@ -69,10 +69,13 @@
   users.users.jake = {
     isNormalUser = true;
     description = "Jake Sykes";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "kvm" "adbusers"];
     packages = with pkgs; [
       librewolf
       google-chrome
+
+      # games lol
+      prismlauncher
     ];
   };
 

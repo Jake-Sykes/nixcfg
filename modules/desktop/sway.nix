@@ -13,5 +13,6 @@
     foot
     fuzzel
     mako
+    brightnessctl
   ];
 }

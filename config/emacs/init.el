@@ -59,3 +59,15 @@
 (use-package nix-mode
   :straight t
   :mode "\\.nix\\'")
+
+;;; org stuff
+
+(defun jds/org-hook ()
+  (visual-line-mode)
+  (olivetti-mode)
+  (olivetti-set-width 100))
+
+(use-package olivetti
+  :straight t)
+
+(add-hook 'org-mode-hook 'jds/org-hook)
