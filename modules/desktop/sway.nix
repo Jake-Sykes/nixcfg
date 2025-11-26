@@ -16,6 +16,8 @@
     brightnessctl
     grim
     slurp
+    swayimg
+    bluetui
     xfce.thunar
   ];
 }

@@ -10,21 +10,32 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
-    nixosConfigurations = {
-      nyx = nixpkgs.lib.nixosSystem {
+  outputs = { self, nixpkgs, nixpkgs-stable, home-manager, ... }@inputs:
+    let
+      system = "x86_64-linux";
+
+      pkgs-stable = import nixpkgs-stable {
         system = "x86_64-linux";
-        modules = [
-          ./hosts/nyx
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit inputs; };
-            home-manager.users.jake = ./home/jake.nix;
-          }
-        ];
+        config = { allowUnfree = true; android_sdk.accept_license = true; };
+      };
+    in {
+      nixosConfigurations = {
+        nyx = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            ./hosts/nyx
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = { inherit inputs; };
+              home-manager.users.jake = ./home/jake.nix;
+            }
+          ];
+          specialArgs = {
+            inherit pkgs-stable;
+          };
+        };
       };
     };
-  };
 }
